@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.2.0" />
+    <PackageReference Include="CsvHelper" Version="27.1.1" />
+    <PackageReference Include="DevExpress.Wpf.Core" Version="21.1.*-*" />
+    <PackageReference Include="devexpress.wpf.grid.core" Version="21.1.5" />
+    <PackageReference Include="DevExpress.Wpf.Themes.All" Version="21.1.*-*" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="DevExpress.Xpf.Printing.v21.1">
+      <HintPath>..\..\..\App\DevExpress\Components\Offline Packages\devexpress.wpf.printing\21.1.5\lib\netcoreapp3.0\DevExpress.Xpf.Printing.v21.1.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
