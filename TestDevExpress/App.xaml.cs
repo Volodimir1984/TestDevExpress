@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Autofac;
 using System.Windows;
 using System.Windows.Documents;

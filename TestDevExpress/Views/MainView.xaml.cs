@@ -15,45 +15,5 @@ namespace TestDevExpress.Views
         {
             InitializeComponent();
         }
-
-        private void ExportToCsv(object sender, ItemClickEventArgs e)
-        {
-
-            try
-            {
-                var filePath = GetFilePath("(*.csv)|*.csv");
-                Tb.PrintSelectedRowsOnly = true;
-                Tb.ExportToCsv(filePath);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-
-        }
-
-        private void ExportToTxt(object sender, ItemClickEventArgs e)
-        {
-            try
-            {
-                var filePath = GetFilePath("(*.txt)|*.txt");
-                Tb.PrintSelectedRowsOnly = true;
-                Tb.ExportToText(filePath);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        private string GetFilePath(string filter)
-        {
-            var dialog = new SaveFileDialog
-            {
-                Filter = filter
-            };
-
-            return dialog.ShowDialog() == false ? null : dialog.FileNames.First();
-        }
     }
 }

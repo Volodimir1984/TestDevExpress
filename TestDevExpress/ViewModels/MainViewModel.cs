@@ -1,7 +1,10 @@
 ﻿using DevExpress.Mvvm;
 using DevExpress.Mvvm.DataAnnotations;
+using DevExpress.Xpf.Grid;
+using Microsoft.Win32;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using TestDevExpress.Interfaces;
@@ -35,7 +38,48 @@ namespace TestDevExpress.ViewModels
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            
+        }
+
+        [Command]
+        public void ExportToCsv(TableView tableView)
+        {
+            tableView.PrintSelectedRowsOnly = true;
+
+            try
+            {
+                var filePath = GetFilePath("(*.csv)|*.csv");
+                tableView.PrintSelectedRowsOnly = true;
+                tableView.ExportToCsv(filePath);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        [Command]
+        public void ExportToTxt(TableView tableView)
+        {
+            try
+            {
+                var filePath = GetFilePath("(*.txt)|*.txt");
+                tableView.PrintSelectedRowsOnly = true;
+                tableView.ExportToText(filePath);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private string GetFilePath(string filter)
+        {
+            var dialog = new SaveFileDialog
+            {
+                Filter = filter
+            };
+
+            return dialog.ShowDialog() == false ? null : dialog.FileNames.First();
         }
     }
 }

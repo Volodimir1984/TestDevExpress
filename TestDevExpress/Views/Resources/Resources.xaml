@@ -1,0 +1,24 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+                    xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars">
+
+    <Style TargetType="{x:Type dxg:TableView}" 
+           x:Key="ContextMenu">
+        <Setter Property="dxb:BarManager.DXContextMenu">
+            <Setter.Value>
+                <dxb:PopupMenu>
+                    <dxb:PopupMenu.Items>
+                        <dxb:BarButtonItem  Content="Convert to CSV" 
+                                            Command="{Binding RelativeSource={RelativeSource AncestorType=dxg:TableView}, Path=DataContext.ExportToCsvCommand}" 
+                                            CommandParameter="{Binding  RelativeSource={RelativeSource AncestorType=dxg:TableView}}"/>
+                        <dxb:BarButtonItem  Content="Convert to TXT" 
+                                            Command="{Binding RelativeSource={RelativeSource AncestorType=dxg:TableView}, Path=DataContext.ExportToTxtCommand}" 
+                                            CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=dxg:TableView}}"/>
+                    </dxb:PopupMenu.Items>
+                </dxb:PopupMenu>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
